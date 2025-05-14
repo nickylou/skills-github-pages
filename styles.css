@@ -1,0 +1,1925 @@
+:root {
+    --invitation-padding: 40px;
+    --card-max-width: 800px;
+	--bg-color: #fff9f0;
+    --card-color: #fff9f0;
+    --envelope-front: #f5e9dc;
+	--show-grid-borders: 1; /* 1 to show borders, 0 to hide */
+}
+
+@media (min-width: 769px) {
+	.invitation-container:not(.visible) ~ .nav-arrows {
+        display: none !important;
+    }
+	
+	.invitation-container.visible ~ .nav-arrows {
+        display: block;
+    }
+	
+    .nav-arrows {
+        display: block !important;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        pointer-events: none;
+        z-index: 1000;
+    }
+    
+    .nav-arrow {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: rgba(216, 168, 168, 0.8);
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: all;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-arrow:hover {
+        background: #d8a8a8;
+        transform: scale(1.1);
+    }
+    
+    .nav-arrow.prev {
+        left: 20px;
+    }
+    
+    .nav-arrow.next {
+        right: 20px;
+    }
+    
+    .nav-arrow i {
+        color: #fff9f0;
+        font-size: 24px;
+    }
+	
+	.invitation-card {
+		max-width: calc(100vw - 200px) !important;
+		max-height: calc(100vh - 60px);
+    }
+	
+	.main-grid {
+		display: grid;
+		grid-template-columns: 1fr 1ch 1fr;
+	}
+	
+	.main-grid-divider {
+		width: 1px;
+		height: 170px;
+		background: #d8a8a8;
+		align-self: anchor-center;
+}
+	
+	.main-grid-cell {
+		padding: 20px;
+	}
+}
+
+@media (min-height: 1000px) {
+	.location-page .invitation-border{
+		position: absolute;
+        top: 50px;
+		bottom: 100px;
+		max-height: 90%;
+		max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --invitation-padding: 20px;
+    }
+	.invitation-border {
+        padding: 20px;
+        border-width: 8px;
+    }
+	
+	.invitation-border::before {
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+    }
+    
+    .wedding-details {
+        margin: 30px 0;
+    }
+    
+    .transportation {
+        margin-top: 20px;
+    }
+	
+	.invitation-container::after {
+        display: block;
+    }
+    
+    .invitation-container.swipe-hint-left::after {
+        right: 10px;
+        transform: translateY(-50%);
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%235a3e36"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+    }
+    
+    .invitation-container.swipe-hint-right::after {
+        left: 10px;
+        transform: translateY(-50%) rotate(180deg);
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%235a3e36"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+    }
+	
+	.invitation-page {
+        height: 100vh !important;
+        padding-bottom: 50px; /* Space for indicators */
+		height: calc(100vh - 50px);
+		padding-bottom: 50px auto;
+    }
+	
+	.location-page .invitation-border{
+        padding-top: 30px;
+		padding-bottom: 30px;
+    }
+	
+	.location-page .page-title{
+		margin: 10px auto;
+	}
+
+	.location-page .divider {
+        margin: 10px auto;
+    }
+	
+	.location-page .location-grid{
+		padding-bottom: 50px;
+		align-items: stretch;
+		grid-template-columns: 1fr 1fr;		
+	}
+	
+	.location-page .map-ratio-keeper {
+		padding-bottom: 70%; /* Better aspect ratio */
+	}
+	  
+    .invitation-card {
+        padding: 20px;
+        height: auto;
+		max-height: calc(100vh - 60px);
+		max-width: calc(100vw - 15px) !important;
+    }
+    
+    .invitation-content {
+        max-height: calc(100vh - 100px);
+    }
+    
+    .page-indicators {
+        bottom: 15px !important; /* Raise indicators slightly */
+		padding: 5px 0;
+		background: rgba(255, 249, 240, 0.7); /* Semi-transparent background */
+		backdrop-filter: blur(2px);
+    }
+	
+	.couple-names {
+        font-size: 3rem;
+        margin: 10px 0;
+    }
+    
+    .divider {
+        margin: 5px auto;
+    }
+    
+    .wedding-details {
+        margin: 10px 0;
+    }
+    
+    /* Gallery adjustments */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        max-height: 40vh;
+    }
+    
+    .gallery-thumbnail {
+        height: 80px;
+    }
+	
+	.location-page .invitation-card {
+        padding-bottom: 50px; /* Extra space for indicators */
+    }
+    
+    .location-page .map-container {
+        height: 30vh;
+    }
+    
+    .transport-title {
+        font-size: 1.1rem;
+    }
+	
+	.location-page .transportation {
+        margin-top: 10px;
+        padding-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --invitation-padding: 15px;
+    }
+	.gallery-grid {
+        grid-template-columns: 2fr 2fr;
+    }
+    
+    .gallery-thumbnail {
+        max-height: 150px;
+    }
+	
+	.invitation-card {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .invitation-border {
+        padding: 15px;
+        border-width: 6px;
+    }
+    
+    .divider {
+        width: 60px;
+        margin: 15px auto;
+    }
+    
+    .location-details, .transportation {
+        margin: 15px 0;
+    }
+    
+    .form-alternate {
+        font-size: 0.9rem;
+    }
+	
+	.invitation-content {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-thumbnail {
+        height: 70px;
+    }
+	
+	.location-page .map-container {
+        height: 25vh;
+    }
+    
+    .location-page .venue-address,
+    .location-page .invitation-text {
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+    max-height: 100%;
+}
+
+/* Music toggle button */
+.music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e8c4c4;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.music-toggle i {
+    font-size: 20px;
+    color: #5a3e36;
+}
+
+/* Page transition animations */
+.invitation-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+	box-sizing: border-box;
+    overflow-y: auto;
+	display: flex;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	flex-direction: column;
+	justify-content: center;
+	transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    contain: strict;
+	overflow-x: hidden !important;
+	transition: 
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        opacity 0.5s ease;
+	will-change: transform, opacity;
+}
+
+
+.invitation-card {
+    background: #fff9f0;
+    border-radius: 12px;
+    padding: 40px;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+	box-sizing: border-box;
+}
+
+.invitation-content {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.invitation-card::-webkit-scrollbar {
+    display: none;
+}
+
+.invitation-text, .venue-address {
+    line-height: 1.4;
+    margin: 8px 0;
+}
+
+.invitation-page.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.invitation-page.exit {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* Loading animation */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(249, 243, 233, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e8c4c4;
+    border-top-color: #d8a8a8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.envelope.jiggle {
+    animation: envelopeJiggle 2s ease-in-out infinite;
+    animation-delay: 1s; /* Wait for initial load */
+	0%, 100% { 
+        transform: 
+            translateY(0) 
+            rotateZ(0deg) 
+            scale(1); 
+    }
+    30% { 
+        transform: 
+            translateY(-5px) 
+            rotateZ(-1.5deg) 
+            scale(1.01); 
+    }
+    60% { 
+        transform: 
+            translateY(2px) 
+            rotateZ(1.2deg) 
+            scale(0.99); 
+    }
+    80% { 
+        transform: 
+            translateY(-1px) 
+            rotateZ(-0.8deg) 
+            scale(1.005); 
+    }
+}
+
+@keyframes envelopeJiggle {
+    0%, 100% { transform: translateX(0) rotateZ(0); }
+    25% { transform: translateX(-3px) rotateZ(-2deg); }
+    50% { transform: translateX(2px) rotateZ(2deg); }
+    75% { transform: translateX(1px) rotateZ(-1deg); }
+}
+
+.envelope {
+    width: 500px;
+    height: 320px;
+    position: relative;
+    cursor: pointer;
+    margin: 0 auto;
+    z-index: 200;
+	animation: envelopeJiggle 1.5s ease-in-out infinite;
+    transform-origin: center bottom;
+	will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    filter: 
+        drop-shadow(0 10px 20px rgba(90, 62, 54, 0.2))
+        brightness(1.02);
+    transition: 
+        filter 0.3s ease,
+        transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.envelope svg {
+    width: 100%;
+    height: 100%;
+}
+
+.envelope-back {
+    fill: #fff9f0;
+    stroke: #e8c4c4;
+    stroke-width: 1px;
+    transition: all 0.5s ease;
+}
+
+.envelope-front {
+    fill: #f5e9dc;
+    stroke: #d8a8a8;
+    stroke-width: 0.5px;
+    transition: all 0.5s ease 0.1s;
+}
+
+.envelope-flap {
+    fill: #f5e9dc; /* Lighter color for better contrast */
+    stroke: #c49898; /* Darker stroke for definition */
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    transform-origin: top center;
+	background-image: 
+        linear-gradient(145deg, 
+            rgba(255,255,255,0.4) 0%, 
+            rgba(255,255,255,0.1) 50%,
+            rgba(255,255,255,0.4) 100%),
+        url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23f5e9dc" fill-opacity="0.1" d="M30,10L50,30L70,10L90,30L70,50L90,70L70,90L50,70L30,90L10,70L30,50L10,30L30,10Z"/></svg>');
+    background-size: 150px;
+    transition: 
+        transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+        fill 0.3s ease;
+    filter: 
+        drop-shadow(0 2px 3px rgba(90, 62, 54, 0.2)) /* Outer shadow */
+        url(#flapShadow);
+    transform: translateY(-2px); /* Slight lift when closed */
+}
+
+.envelope.open {
+    animation: none;
+}
+
+/* Add hover interaction */
+.envelope:not(.open):hover {
+    animation: envelopeJiggle 0.8s ease-in-out infinite;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+/* Mobile touch feedback */
+.envelope:not(.open):active {
+    transform: scale(0.98);
+}
+
+.envelope-seal {
+    fill: #c62828;
+    stroke: #8e0000;
+    stroke-width: 1px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.envelope-corner {
+    fill: none;
+    stroke: #d4af37;
+    stroke-width: 1.5px;
+    stroke-dasharray: 0;
+    opacity: 0.8;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg) translateY(-20px) perspective(1000px);
+    filter: 
+        drop-shadow(0 -15px 25px rgba(90, 62, 54, 0.3))
+        brightness(1.1);
+    transition: 
+        transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+        filter 0.5s ease;
+}
+
+.envelope-flap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(
+        to bottom, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0) 100%
+    );
+    border-radius: 5px 5px 0 0;
+    pointer-events: none;
+}
+
+.envelope-flap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(
+        to top, 
+        rgba(0,0,0,0.05) 0%, 
+        rgba(0,0,0,0) 100%
+    );
+    pointer-events: none;
+}
+
+.envelope.open .envelope-front {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.envelope.open .envelope-seal {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* Envelope Text */
+.envelope-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    color: #5a3e36;
+    font-family: 'Playfair Display', serif;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    width: 100%;
+}
+
+.envelope-text h2 {
+    font-size: 2.3rem;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.envelope-text p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    margin-top: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.envelope-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+    margin: 12px auto;
+    opacity: 0.3;
+}
+
+/* Envelope Open Animation */
+.envelope.open .envelope-text {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .envelope {
+        width: 320px;
+        height: 220px;
+    }
+    
+    .envelope-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .envelope-text p {
+        font-size: 0.8rem;
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	background: #fff9f0;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+.invitation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Initially hidden */
+    background: #fff9f0;
+    z-index: 5; /* Below envelope when closed, above when open */
+	opacity: 0;
+    transition: opacity 0.5s ease;
+    overflow-y: auto;
+	overflow-x: hidden !important;
+}
+
+.invitation-container.visible {
+    opacity: 1;
+}
+
+.invitation-container.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.envelope.open {
+    z-index: 50; /* Below container when open */
+	pointer-events: none;
+}
+
+
+
+/* Swipe animation classes */
+.invitation-page.swipe-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.invitation-page.swipe-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.invitation-page.swipe-from-right {
+    animation: swipeFromRight 0.3s ease;
+}
+
+.invitation-page.swipe-from-left {
+    animation: swipeFromLeft 0.3s ease;
+}
+
+/* Add this to show swipe direction hint */
+.invitation-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    background: rgba(216, 168, 168, 0.5);
+    border-radius: 50%;
+    display: none;
+}
+
+@keyframes swipeFromRight {
+    from { 
+        transform: translate3d(100%, 0, 0);
+        opacity: 0.8;
+    }
+    to { 
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes swipeFromLeft {
+    from { 
+        transform: translate3d(-100%, 0, 0);
+        opacity: 0.8;
+    }
+    to { 
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+/* Page Title */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: #5a3e36;
+    margin: 0 0 20px 0;
+    letter-spacing: 1px;
+}
+
+/* Gallery Styles */
+.photo-gallery {
+    margin: 30px 0;
+	width: 100%;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border: 1px solid #e8c4c4;
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.03);
+}
+
+/* RSVP Form Styles */
+.rsvp-form-container {
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+/* === Compact RSVP Layout Fix === */
+.rsvp-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  background: rgba(255, 249, 240, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.rsvp-title {
+  font-family: 'Playfair Display', serif;
+  color: #5a3e36;
+  text-align: center;
+  margin-bottom: 0.3rem;
+  font-size: 1.4rem;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #5a3e36;
+  margin-bottom: 0.3rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #e8c4c4;
+  border-radius: 6px;
+  background: #fff9f0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #d8a8a8;
+  box-shadow: 0 0 0 2px rgba(216, 168, 168, 0.15);
+}
+
+.radio-group {
+  background: rgba(232, 196, 196, 0.08);
+  border-radius: 6px;
+  padding: 0.8rem;
+}
+
+.radio-group .radio-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: #5a3e36;
+}
+
+.radio-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .radio-options {
+    flex-direction: row;
+  }
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #5a3e36;
+  font-size: 0.9rem;
+}
+
+.custom-radio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d8a8a8;
+  border-radius: 50%;
+  position: relative;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+input[type="radio"]:checked + .custom-radio::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  background: #d8a8a8;
+  border-radius: 50%;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #d8a8a8;
+  color: #fff9f0;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #c49898;
+  transform: translateY(-1px);
+}
+
+.submit-btn i {
+  font-size: 0.85rem;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Extra Mobile Tweaks */
+@media (max-width: 480px) {
+  .rsvp-container {
+    padding: 1rem;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+}
+
+
+.rsvp-submit {
+    background: #d8a8a8;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+}
+
+.rsvp-submit:hover {
+    background: #c49898;
+}
+
+/* Location Page Styles */
+.location-details {
+    margin-bottom: 30px;
+}
+
+.map-container {
+    width: 100%;
+    margin: 30px 0;
+    position: relative;
+}
+
+.map-ratio-keeper {
+    position: relative;
+    padding-bottom: 56%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+	background: #f5f5f5 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e8c4c4" d="M30 50a20 20 0 1 1 40 0 20 20 0 0 1-40 0"/></svg>') no-repeat center;
+    background-size: 50px;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e8c4c4;
+}
+
+.transportation {
+    margin-top: 30px;
+}
+
+.transport-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #5a3e36;
+    margin: 20px 0 10px 0;
+    font-weight: normal;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+   
+/* Gallery Lightbox Styles */
+.gallery-thumbnail {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 1px solid #e8c4c4;
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail-container {
+    padding: 5px;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border: 3px solid #fff9f0;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lightbox-caption {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* Google Form Styles */
+.google-form-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 30px auto;
+    border: 1px solid #e8c4c4;
+}
+
+.google-form-container iframe {
+    border: none;
+}
+
+.form-alternate {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #5a3e36;
+}
+
+.form-alternate a {
+    color: #d8a8a8;
+    text-decoration: none;
+    border-bottom: 1px dashed #d8a8a8;
+}
+
+.form-alternate a:hover {
+    color: #c49898;
+    border-bottom-color: #c49898;
+}
+
+.container:not(.envelope-open) .invitation-page:first-child {
+    animation: none !important;
+    transform: translateX(0) !important;
+}
+
+.location-page .invitation-content {
+    padding-bottom: 10px; /* Add padding at bottom */
+}
+
+
+.location-page .map-container {
+    height: 30vh;
+    margin: 10px 0 5px 0;
+}
+
+.location-page .transportation {
+    margin: 15px 0 5px 0;
+    padding: 0;
+}
+
+.location-page .map-link-text {
+    display: none; /* Hide duplicate "view larger map" */
+}
+
+.location-page .map-link-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #5a3e36;
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.location-page .location-details {
+    margin: 15px 0;
+    padding: 0 10px;
+}
+
+
+.map-container::after {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #5a3e36;
+    margin-top: 5px;
+}
+
+/* Hide Google's default attribution */
+.map-container .map *[aria-label] {
+    display: none !important;
+}
+
+.invitation-border {
+    overflow: hidden; /* Prevent content from overflowing the border */
+	max-width: 100% !important;
+}
+
+
+/* Better transportation list */
+.transportation p {
+    margin: 5px 0;
+}
+
+.main-invitation .invitation-content {
+    padding: 15px 0;
+    transform: scale(0.95);
+    transform-origin: top center;
+}
+
+.main-invitation .couple-names {
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin: 5px 0 10px 6.5%;
+}
+
+.main-invitation .divider {
+    margin: 10px auto;
+}
+
+.main-invitation .wedding-details {
+    margin: 20px 0;
+}
+
+.main-invitation .venue-details {
+    margin: 20px 0 10px 0;
+}
+
+@media (max-width: 480px) {
+    .main-invitation .invitation-content {
+        transform: scale(0.9);
+    }
+    
+    .main-invitation .wedding-date,
+    .main-invitation .wedding-year {
+        font-size: 1.1rem;
+    }
+}
+
+.main-invitation .invitation-header {
+    margin: 10px 0 5px 0;
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+}
+
+.main-invitation .wedding-date {
+    margin: 15px 0 3px 0;
+    font-size: 1.2rem;
+}
+
+.main-invitation .wedding-year {
+    margin: 0 0 10px 0;
+}
+
+.main-invitation .venue-name {
+    margin: 15px 0 5px 0;
+}
+
+@media (max-width: 480px) {
+    .main-invitation .couple-names {
+        font-size: 2.2rem;
+        margin-bottom: 5px;
+    }
+    
+    .main-invitation .wedding-time {
+        margin: 5px 0;
+    }
+}
+
+.location-page .map-container {
+    height: 10vh;
+    min-height: 120px;
+    margin: 8px 0;
+}
+
+.location-page .transportation {
+    margin: 12px 0 0 0;
+    padding: 8px 0 25px 0;
+}
+
+.location-page .transport-title {
+    margin: 0 0 5px 0;
+}
+
+/* Hide Google's built-in text */
+.gm-style-cc, [aria-label="Map data"] {
+    display: none !important;
+}
+
+/* Better list formatting */
+.transportation ul {
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+.transportation li {
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+.envelope-page .nav-arrows,
+.envelope-page .page-indicators {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+
+/* Show navigation elements only when invitation is open */
+.container.envelope-open .nav-arrows,
+.container.envelope-open .page-indicators {
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.container:not(.envelope-open) .nav-arrows,
+.container:not(.envelope-open) .page-indicators,
+.envelope-page .nav-arrows,
+.envelope-page .page-indicators {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.container.envelope-open .nav-arrows,
+.container.envelope-open .page-indicators {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
+.invitation-border {
+    border: 12px solid transparent;
+    border-image: linear-gradient(135deg, #d4af37 0%, #f9d423 50%, #d4af37 100%);
+    border-image-slice: 1;
+    border-radius: 8px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.1),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    background: #fff9f0;
+}
+
+/* Metallic gold border effect */
+.invitation-border::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.8) 0%, 
+        rgba(249, 212, 35, 0.8) 50%, 
+        rgba(212, 175, 55, 0.8) 100%);
+    z-index: -1;
+    filter: blur(5px);
+    opacity: 0.7;
+}
+
+/* Embossed effect for text */
+.couple-names, .page-title {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.couple-names::after, .page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.5) 50%, 
+        transparent 100%);
+}
+
+/* Enhanced divider */
+.divider {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #d4af37 50%, 
+        transparent 100%);
+    margin: 20px auto;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.8);
+}
+
+/* 3D effect for the card */
+.invitation-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+}
+
+/* Add subtle texture to the card */
+.invitation-content {
+    background-image: 
+        url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23d8a8a8" fill-opacity="0.08" d="M50,0C25,0,0,25,0,50c0,25,25,50,50,50s50-25,50-50C100,25,75,0,50,0z M50,90c-22.1,0-40-17.9-40-40S27.9,10,50,10s40,17.9,40,40S72.1,90,50,90z"/></svg>'),
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 80px 80px, 20px 20px, 20px 20px;
+}
+
+.invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        transparent 50%, 
+        rgba(0,0,0,0.03) 50%, 
+        rgba(0,0,0,0.06) 56%, 
+        rgba(0,0,0,0.03) 62%, 
+        transparent 62%, 
+        transparent 100%);
+    border-radius: 0 12px 0 0;
+}
+
+.couple-names {
+    position: relative;
+    padding-top: 0;
+}
+
+@media (max-height: 700px) {
+    .main-invitation .invitation-content {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+    
+    .main-invitation .venue-details {
+        margin-top: 20px;
+    }
+	
+	.location-page .map-container {
+		height: 5vh;
+		min-height: 80px;
+		margin: 8px 0;
+	}
+	
+}
+
+@media (max-height: 600px) {
+    .main-invitation .invitation-content {
+        transform: scale(0.85);
+    }
+    
+    .main-invitation .couple-names {
+        margin-bottom: 10px;
+    }
+    
+    .main-invitation .divider {
+        margin: 10px auto;
+    }
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 20ch 20ch;
+    gap: 15px;
+    margin-top: 0px;
+    width: 100%;
+}
+
+.grid-cell {
+    background: #fff9f0;
+    border: calc(var(--show-grid-borders) * 1px) solid #e8c4c4;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    text-align: center;
+    font-size: clamp(0.5rem, 2.5vw, 1rem);
+    line-height: 1.4;
+}
+
+.grid-cell h3 {
+    font-family: 'Playfair Display', serif;
+    color: #5a3e36;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    margin-bottom: 3px;
+}
+
+.grid-cell p {
+    font-family: 'Montserrat', sans-serif;
+	font-size: clamp(0.6rem, 1vw, 0.7rem);
+    color: #5a3e36;
+}
+
+.swipe-left {
+    transform: translate3d(-100%, 0, 0) !important;
+}
+
+.swipe-right {
+    transform: translate3d(100%, 0, 0) !important;
+}
+
+.swipe-from-right {
+    animation: swipeFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.swipe-from-left {
+    animation: swipeFromLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+@media (min-width: 769px) {
+    body {
+        padding-right: calc(100vw - 100%);
+    }
+}
+
+@media (max-aspect-ratio: 10/16) {
+	.location-page .map-ratio-keeper {
+		padding-bottom: 85%;
+	}
+	
+	.main-grid{
+		max-height: 20%;
+	}
+	
+	.main-grid-cell h2 {
+		font-size: 90%; 
+	}
+	
+	.main-grid-cell p {
+		font-size: 70%; 
+	}
+	
+	.main-invitation .wedding-date {
+		font-size: 70%; 
+		margin: 5px 0 0 0;
+	}
+	
+	.main-invitation .wedding-time {
+		font-size: 70%; 
+	}
+	.location-page .invitation-border{
+		max-height: 90%;
+    }
+}
+
+@media (max-aspect-ratio: 3/4) {
+	.main-grid{
+		max-height: 20%;
+	}
+	.main-grid-cell h2 {
+		font-size: 90%; 
+	}
+	
+	.main-grid-cell p {
+		font-size: 70%; 
+	}
+	
+	.main-invitation .wedding-date {
+		font-size: 70%; 
+		margin: 5px 0 0 0;
+	}
+	
+	.main-invitation .wedding-time {
+		font-size: 70%; 
+	}
+	.location-page .invitation-border{
+		max-height: 90%;
+    }
+	
+
+}
+
+@media (min-aspect-ratio: 1) {
+	
+	.main-grid-cell {
+		padding: 20px;
+	}
+}
+
+.main-grid {
+	display: grid;
+	grid-template-columns: 1fr 1ch 1fr;
+}
+
+.main-grid-divider {
+	width: 1px;
+	height: 170px;
+	background: #d8a8a8;
+	align-self: anchor-center;
+}
+
+.gallery-thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-thumbnail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(216, 168, 168, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-thumbnail:hover::after {
+    opacity: 1;
+}
+
+.nav-arrow {
+    box-shadow: 0 4px 15px rgba(90, 62, 54, 0.2);
+    transition: 
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease;
+}
+
+.nav-arrow:hover {
+    transform: scale(1.15) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(90, 62, 54, 0.3);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #fff9f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #d4af37, #f9d423);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #c5a235, #e8c220);
+}
+
+.message-board-page .invitation-content {
+    max-width: 800px;
+}
+
+.messages-container {
+    display: grid;
+    gap: 20px;
+    padding: 20px 0;
+    max-height: 40%; /* adjust as needed based on your layout */
+    overflow-y: auto;
+    padding-right: 10px; /* avoid clipping with scrollbar */
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: #d8a8a8;
+  border-radius: 4px;
+}
+
+.message-card {
+  background: rgba(255, 249, 240, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: loveLetter 0.6s ease;
+}
+
+@keyframes loveLetter {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.message-header .fa-heart {
+  color: #d8a8a8;
+}
+
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #5a3e36;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.message-date {
+    color: #c49898;
+    font-size: 0.8rem;
+}
+
+.message-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #5a3e36;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.message-author {
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 0.9rem;
+}
+
+.no-messages, .error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #5a3e36;
+}
+
+.no-messages i, .error-message i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #d8a8a8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.loading-messages {
+    text-align: center;
+    padding: 30px;
+    color: #5a3e36;
+}
+
+.loader-spinner.small {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+    margin: 0 auto 10px;
+}
+
+.custom-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 40px 15px 15px;
+  border: 1px solid #e8c4c4;
+  border-radius: 8px;
+  background: #fff9f0;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-group i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d8a8a8;
+}
+
+.form-radio-group {
+  margin: 25px 0;
+  padding: 15px;
+  border: 1px solid #e8c4c4;
+  border-radius: 8px;
+  background: rgba(255, 249, 240, 0.5);
+}
+
+.radio-options {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.radio-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-check {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d8a8a8;
+  border-radius: 50%;
+  position: relative;
+}
+
+input[type="radio"]:checked + .radio-check::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  background: #d8a8a8;
+  border-radius: 50%;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(90, 62, 54, 0.95);
+  color: #fff9f0;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10000;
+}
+
+.toast.visible {
+  opacity: 1;
+}
+
+.toast.error {
+  background: rgba(192, 57, 43, 0.95);
+}
+
+@media (max-height: 800px) {
+  .rsvp-container {
+    padding: 0.5rem;
+  }
+
+  .rsvp-title {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .radio-group {
+    padding: 0.4rem;
+  }
+
+  .radio-group .radio-label {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .radio-options {
+    gap: 0.4rem;
+  }
+
+  .radio-option {
+    font-size: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  .custom-radio {
+    width: 10px;
+    height: 10px;
+  }
+
+  input[type="radio"]:checked + .custom-radio::after {
+    width: 5px;
+    height: 5px;
+    top: 1px;
+    left: 1px;
+  }
+
+  .submit-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .submit-btn i {
+    font-size: 0.7rem;
+  }
+
+  .form-textarea {
+    min-height: 45px;
+  }
+}
