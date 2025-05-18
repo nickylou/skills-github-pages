@@ -137,7 +137,7 @@
     }
 	
 	.invitation-page {
-        height: 100vh !important;
+        height: 90vh !important;
         padding-bottom: 50px; /* Space for indicators */
 		height: calc(100vh - 50px);
 		padding-bottom: 50px auto;
