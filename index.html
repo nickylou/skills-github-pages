@@ -3,25 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <title>Our Wedding Invitation</title>
+    <title>You've Matched with Nicky & Gina!</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-    <!-- Audio element for background music -->
-    <audio id="envelopeMusic" src="./assets/SummerRain.m4a" preload="auto" playsinline></audio>
-    
-    <!-- Music control button -->
-    <button id="musicToggle" class="music-toggle">
-        <i class="fas fa-music"></i>
-    </button>
-    
-    <div class="container">
-        <!-- Envelope will be inserted here by JavaScript -->
+    <audio id="backgroundMusic" src="./assets/SummerRain.m4a" preload="auto" loop playsinline></audio>
+
+    <div id="app-container">
+        <div class="app-header">
+            <i class="fa-solid fa-bars"></i>
+            <img src="./assets/Bumble_Logo_2024.svg.png" alt="Bumble Logo" class="header-logo">
+            <i class="fa-solid fa-filter"></i>
+        </div>
+
+        <div id="card-stack">
+            </div>
+
+        <div id="action-buttons">
+            <div class.old="button" id="pass"><i class="fa-solid fa-xmark"></i></div>
+            <div class="button" id="like"><i class="fa-solid fa-check"></i></div>
+        </div>
+
+        <button id="musicToggle" class="music-toggle">
+            <i class="fas fa-play"></i>
+        </button>
     </div>
-    
+
+    <div id="match-screen" class="hidden">
+        <div class="match-content">
+            <h1>It's a Match!</h1>
+            <p>You and Nicky & Gina have both said "I do!"</p>
+            <div class="match-photos">
+                <div class="match-photo user"></div>
+                <div class="match-photo couple"></div>
+            </div>
+            <button id="start-chat-btn">Start the Conversation</button>
+        </div>
+    </div>
+
+    <div id="chat-container" class="hidden">
+        <div class="chat-header">
+            <button id="back-to-app-btn"><i class="fa-solid fa-angle-left"></i></button>
+            <div class="chat-profile-pic"></div>
+            <div class="chat-profile-info">
+                <h3>Nicky & Gina</h3>
+                <p>Connected</p>
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+        <div id="message-area">
+            </div>
+        <div class="chat-input-area">
+            <p>Replying is disabled for this conversation.</p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
