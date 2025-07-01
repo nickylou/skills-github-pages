@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         messageArea.innerHTML = ''; // Clear previous messages
 		messageArea.scrollTop = 0;
         
-        addMessageToChat('system', 'You matched with Nicky & Gina on Jul 2, 2025', 0);
+        addMessageToChat('system', 'You matched with Nicky & Gina on Oct 31, 2026', 0);
         addMessageToChat('received', 'We\'re so excited to invite you to our wedding!', 1000);
         addMessageToChat('received', createLocationMessage(), 2000);
         addMessageToChat('received', createRSVPMessage(), 3000);
