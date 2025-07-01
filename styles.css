@@ -264,11 +264,11 @@ html, body {
 }
 
 .match-photo.user {
-    background-image: url('./assets/Nicky.jpg'); 
+    background-image: url('./assets/Nicky.JPG'); 
     transform: translateX(15px);
 }
 .match-photo.couple {
-    background-image: url('./assets/Gina.jpg');
+    background-image: url('./assets/Gina.JPG');
     transform: translateX(-15px);
 }
 
