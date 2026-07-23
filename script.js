@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>Getting married and starting our next adventure!</p>
                 <div class="details-section">
                     <h3>The Wedding</h3>
-                    <div class="detail-item"><i class="fa-solid fa-calendar-day"></i> Saturday, 31 October 2026</div>
+                    <div class="detail-item"><i class="fa-solid fa-calendar-day"></i> Sunday, 11 October 2026</div>
                     <div class="detail-item"><i class="fa-solid fa-champagne-glasses"></i> Reception at MDC Hall, Wisma 76</div>
-					<div class="detail-item"><i class="fa-solid fa-clock"></i> 19:00 - 21:00</div>
+					<div class="detail-item"><i class="fa-solid fa-clock"></i> 18:30 - 21:00</div>
                 </div>
             </div>
         `;
